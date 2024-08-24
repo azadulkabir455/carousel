@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./carousel.css"
+import "./carousel.css";
 
 const Carousel = ({ settings, children }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,8 +9,8 @@ const Carousel = ({ settings, children }) => {
         rightArrow: true,
     });
 
-    //destruction of settings come from props
-    const { showArrows, responsive } = settings;
+    //Destructing of settings come from props and initialize default value
+    const { showArrows = true, responsive = { desktop: { slidesToShow: 4 } } } = settings;
 
     //Function for next/prev slider functionality
     const nextSlide = () => {
@@ -35,18 +35,17 @@ const Carousel = ({ settings, children }) => {
     useEffect(() => {
         // Set item to show on initial load
         const updateItemsToShow = () => {
-            if (window.innerWidth < responsive.mobile.breakpoint) {
+            if (window.innerWidth < responsive.mobile?.breakpoint) {
                 setItemsToShow(responsive.mobile.slidesToShow); // Show item on small screens
-            } else if (window.innerWidth < responsive.tablet.breakpoint) {
+            } else if (window.innerWidth < responsive.tablet?.breakpoint) {
                 setItemsToShow(responsive.tablet.slidesToShow); // Show items on medium screens
             } else {
                 setItemsToShow(responsive.desktop.slidesToShow); // Show items on larger screens
             }
         };
-
         updateItemsToShow();
-        window.addEventListener('resize', updateItemsToShow);
 
+        window.addEventListener('resize', updateItemsToShow);
         //Cleanup for event listener
         return () => {
             window.removeEventListener('resize', updateItemsToShow);
@@ -72,7 +71,7 @@ const Carousel = ({ settings, children }) => {
                     )
                 }
             </div>
-            
+
             {/* Slider arrow button */}
             {showArrows &&
                 <>
