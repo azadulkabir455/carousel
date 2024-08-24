@@ -3,6 +3,18 @@ import Carousel from './carousel/Carousel';
 
 function App() {
 
+  const sliderItem = [
+    {id:1, imgSrc:"https://shorturl.at/q00le"},
+    {id:2, imgSrc:"https://shorturl.at/TaYPg"},
+    {id:3, imgSrc:"https://shorturl.at/WKMhn"},
+    {id:4, imgSrc:"https://shorturl.at/Nj76k"},
+    {id:5, imgSrc:"https://shorturl.at/RBRgw"},
+    {id:6, imgSrc:"https://shorturl.at/pK9XT"},
+    {id:7, imgSrc:"https://rb.gy/9qwwgm"},
+    {id:8, imgSrc:"https://rb.gy/krs7ph"},
+    {id:9, imgSrc:"https://rb.gy/vjpoui"},
+  ]
+
   const settings = {
     showArrows: true,
     responsive: {
@@ -24,34 +36,13 @@ function App() {
     <>
     <h1>Carousel</h1>
       <Carousel settings={settings} >
-        <div>
-          <img src="https://shorturl.at/q00le" alt="img" />
-        </div>
-        <div>
-          <img src="https://shorturl.at/TaYPg" alt="img" />
-        </div>
-        <div>
-          <img src="https://shorturl.at/WKMhn" alt="img" />
-        </div>
-        <div>
-          <img src="https://shorturl.at/Nj76k" alt="img" />
-        </div>
-        <div>
-          <img src="https://shorturl.at/RBRgw" alt="img" />
-        </div>
-        <div>
-          <img src="https://shorturl.at/pK9XT" alt="img" />
-        </div>
-        <div>
-          <img src="https://rb.gy/9qwwgm" alt="img" />
-        </div>
-        <div>
-          <img src="https://rb.gy/krs7ph" alt="img" />
-        </div>
-        <div>
-          <img src="https://rb.gy/vjpoui" alt="img" />
-        </div>
-
+        {
+          sliderItem.map((slider) => 
+            <div key={slider.id}>
+              <img src={slider.imgSrc} alt="img" />
+            </div>
+          )
+        }
       </Carousel>
     </>
   );
